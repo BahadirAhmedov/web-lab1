@@ -115,6 +115,32 @@
     </div>
   </footer>
 
+    <div class="modal" id="order-modal" hidden>
+    <div class="modal__box">
+      <h2>Оформление заказа</h2>
+      <form id="order-form">
+        <label>
+          Имя
+          <input type="text" name="firstName" required>
+        </label>
+        <label>
+          Фамилия
+          <input type="text" name="lastName" required>
+        </label>
+        <label>
+          Адрес доставки
+          <input type="text" name="address" required>
+        </label>
+        <label>
+          Контактный номер телефона
+          <input type="tel" name="phone" required>
+        </label>
+        <div class="modal__actions">
+          <button type="submit" class="btn">Создать заказ</button>
+          <button type="button" class="btn btn-ghost" id="close-order">Отмена</button>
+        </div>
+      </form>
+
 
 </body>
 </html>
