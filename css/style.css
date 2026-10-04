@@ -46,7 +46,6 @@ ul {
   gap: 16px;
 }
 
-/* Добавлено: отступы для основных блоков */
 .hero,
 .catalog,
 .cart-section,
@@ -54,14 +53,12 @@ ul {
   padding: 24px 0;
 }
 
-/* Добавлено: сетка карточек товаров (grid) */
 .products {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
 
-/* Добавлено: стили карточки товара */
 .card {
   display: flex;
   flex-direction: column;
