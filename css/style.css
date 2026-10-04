@@ -130,3 +130,65 @@ ul {
   align-items: center;
   gap: 8px;
 }
+
+/* Добавлено: стили модального окна и формы заказа */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal__box {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  padding: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+input {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px;
+}
+
+.modal__actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Добавлено: адаптив для планшета */
+@media (min-width: 640px) {
+  .products {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Добавлено: адаптив для ноутбука */
+@media (min-width: 900px) {
+  .products {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Добавлено: адаптив для телефона */
+@media (max-width: 480px) {
+  .card__bottom,
+  .cart-item,
+  .modal__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
