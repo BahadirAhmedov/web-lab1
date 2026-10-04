@@ -79,3 +79,54 @@ ul {
   gap: 8px;
   margin-top: 12px;
 }
+
+/* Добавлено: стили кнопок */
+.btn,
+.qty button,
+.remove {
+  cursor: pointer;
+}
+
+.btn {
+  background: #333;
+  color: #fff;
+  border: 0;
+  padding: 8px 12px;
+}
+
+.btn-ghost {
+  background: #fff;
+  color: #333;
+  border: 1px solid #333;
+}
+
+/* Добавлено: стили корзины и изменения количества */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.cart-item__info {
+  flex: 1;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
