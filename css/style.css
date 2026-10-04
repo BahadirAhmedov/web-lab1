@@ -80,7 +80,6 @@ ul {
   margin-top: 12px;
 }
 
-/* Добавлено: стили кнопок */
 .btn,
 .qty button,
 .remove {
@@ -100,7 +99,6 @@ ul {
   border: 1px solid #333;
 }
 
-/* Добавлено: стили корзины и изменения количества */
 .cart-items {
   display: flex;
   flex-direction: column;
@@ -131,7 +129,6 @@ ul {
   gap: 8px;
 }
 
-/* Добавлено: стили модального окна и формы заказа */
 .modal {
   position: fixed;
   inset: 0;
@@ -169,21 +166,18 @@ input {
   gap: 8px;
 }
 
-/* Добавлено: адаптив для планшета */
 @media (min-width: 640px) {
   .products {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-/* Добавлено: адаптив для ноутбука */
 @media (min-width: 900px) {
   .products {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-/* Добавлено: адаптив для телефона */
 @media (max-width: 480px) {
   .card__bottom,
   .cart-item,
