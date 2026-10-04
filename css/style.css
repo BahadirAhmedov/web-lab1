@@ -29,3 +29,56 @@ ul {
   margin: 0 auto;
   padding: 0 16px;
 }
+
+.header {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+/* Добавлено: отступы для основных блоков */
+.hero,
+.catalog,
+.cart-section,
+.footer {
+  padding: 24px 0;
+}
+
+/* Добавлено: сетка карточек товаров (grid) */
+.products {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Добавлено: стили карточки товара */
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
