@@ -97,3 +97,48 @@ function removeFromCart(id) {
   saveCart();
   renderCart();
 }
+
+document.querySelectorAll(".add-to-cart").forEach(function (button) {
+  button.addEventListener("click", function () {
+    addToCart({
+      id: button.dataset.id,
+      name: button.dataset.name,
+      price: Number(button.dataset.price),
+      img: button.dataset.img
+    });
+  });
+});
+
+cartItemsEl.addEventListener("click", function (event) {
+  const button = event.target.closest("button");
+  if (!button) return;
+
+  const id = button.dataset.id;
+  const action = button.dataset.action;
+
+  if (action === "plus") changeQty(id, 1);
+  if (action === "minus") changeQty(id, -1);
+  if (action === "remove") removeFromCart(id);
+});
+
+document.getElementById("open-order").addEventListener("click", function () {
+  formEl.hidden = false;
+  successEl.hidden = true;
+  formEl.reset();
+  modalEl.hidden = false;
+});
+
+document.getElementById("close-order").addEventListener("click", function () {
+  modalEl.hidden = true;
+});
+
+formEl.addEventListener("submit", function (event) {
+  event.preventDefault();
+  formEl.hidden = true;
+  successEl.hidden = false;
+  cart = [];
+  saveCart();
+  renderCart();
+});
+
+renderCart();
