@@ -1,4 +1,3 @@
-// Добавлено: сохранение и загрузка корзины из localStorage
 const STORAGE_KEY = "coffee-cart";
 
 const cartItemsEl = document.getElementById("cart-items");
@@ -20,4 +19,10 @@ function loadCart() {
 
 function saveCart() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+}
+
+function getTotal() {
+  return cart.reduce(function (sum, item) {
+    return sum + item.price * item.qty;
+  }, 0);
 }
