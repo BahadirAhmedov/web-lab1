@@ -51,3 +51,49 @@ function renderCart() {
 
   cartSumEl.textContent = getTotal();
 }
+
+function addToCart(product) {
+  const existing = cart.find(function (item) {
+    return item.id === product.id;
+  });
+
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      img: product.img,
+      qty: 1
+    });
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(function (product) {
+    return product.id === id;
+  });
+  if (!item) return;
+
+  item.qty += delta;
+  if (item.qty < 1) {
+    cart = cart.filter(function (product) {
+      return product.id !== id;
+    });
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(function (item) {
+    return item.id !== id;
+  });
+  saveCart();
+  renderCart();
+}
