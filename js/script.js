@@ -26,3 +26,28 @@ function getTotal() {
     return sum + item.price * item.qty;
   }, 0);
 }
+
+function renderCart() {
+  cartItemsEl.innerHTML = "";
+  cartEmptyEl.hidden = cart.length > 0;
+
+  cart.forEach(function (item) {
+    const li = document.createElement("li");
+    li.className = "cart-item";
+    li.innerHTML =
+      '<img src="' + item.img + '" alt="' + item.name + '">' +
+      '<div class="cart-item__info">' +
+        "<h3>" + item.name + "</h3>" +
+        "<p>" + item.price + " ₽</p>" +
+        '<div class="qty">' +
+          '<button type="button" data-action="minus" data-id="' + item.id + '">-</button>' +
+          "<span>" + item.qty + "</span>" +
+          '<button type="button" data-action="plus" data-id="' + item.id + '">+</button>' +
+        "</div>" +
+      "</div>" +
+      '<button type="button" class="remove" data-action="remove" data-id="' + item.id + '">Удалить</button>';
+    cartItemsEl.appendChild(li);
+  });
+
+  cartSumEl.textContent = getTotal();
+}
