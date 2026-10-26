@@ -27,26 +27,81 @@ function getTotal() {
   }, 0);
 }
 
+function createElement(tag, options) {
+  const el = document.createElement(tag);
+  const settings = options || {};
+
+  if (settings.className) el.className = settings.className;
+  if (settings.text !== undefined) el.textContent = settings.text;
+  if (settings.attrs) {
+    Object.keys(settings.attrs).forEach(function (name) {
+      el.setAttribute(name, settings.attrs[name]);
+    });
+  }
+  if (settings.dataset) {
+    Object.keys(settings.dataset).forEach(function (name) {
+      el.dataset[name] = settings.dataset[name];
+    });
+  }
+  if (settings.children) {
+    settings.children.forEach(function (child) {
+      el.appendChild(child);
+    });
+  }
+
+  return el;
+}
+
+function createCartItem(item) {
+  const image = createElement("img", {
+    attrs: { src: item.img, alt: item.name }
+  });
+
+  const qty = createElement("div", {
+    className: "qty",
+    children: [
+      createElement("button", {
+        text: "-",
+        attrs: { type: "button" },
+        dataset: { action: "minus", id: item.id }
+      }),
+      createElement("span", { text: item.qty }),
+      createElement("button", {
+        text: "+",
+        attrs: { type: "button" },
+        dataset: { action: "plus", id: item.id }
+      })
+    ]
+  });
+
+  const info = createElement("div", {
+    className: "cart-item__info",
+    children: [
+      createElement("h3", { text: item.name }),
+      createElement("p", { text: item.price + " ₽" }),
+      qty
+    ]
+  });
+
+  const removeButton = createElement("button", {
+    className: "remove",
+    text: "Удалить",
+    attrs: { type: "button" },
+    dataset: { action: "remove", id: item.id }
+  });
+
+  return createElement("li", {
+    className: "cart-item",
+    children: [image, info, removeButton]
+  });
+}
+
 function renderCart() {
-  cartItemsEl.innerHTML = "";
+  cartItemsEl.replaceChildren();
   cartEmptyEl.hidden = cart.length > 0;
 
   cart.forEach(function (item) {
-    const li = document.createElement("li");
-    li.className = "cart-item";
-    li.innerHTML =
-      '<img src="' + item.img + '" alt="' + item.name + '">' +
-      '<div class="cart-item__info">' +
-        "<h3>" + item.name + "</h3>" +
-        "<p>" + item.price + " ₽</p>" +
-        '<div class="qty">' +
-          '<button type="button" data-action="minus" data-id="' + item.id + '">-</button>' +
-          "<span>" + item.qty + "</span>" +
-          '<button type="button" data-action="plus" data-id="' + item.id + '">+</button>' +
-        "</div>" +
-      "</div>" +
-      '<button type="button" class="remove" data-action="remove" data-id="' + item.id + '">Удалить</button>';
-    cartItemsEl.appendChild(li);
+    cartItemsEl.appendChild(createCartItem(item));
   });
 
   cartSumEl.textContent = getTotal();
